@@ -1,0 +1,125 @@
+#pragma once
+
+namespace Ferz {
+
+	using namespace System;
+	using namespace System::ComponentModel;
+	using namespace System::Collections;
+	using namespace System::Windows::Forms;
+	using namespace System::Data;
+	using namespace System::Drawing;
+
+	/// <summary>
+	/// —водка дл€ First
+	/// </summary>
+	public ref class First : public System::Windows::Forms::Form
+	{
+	private: static array <PictureBox^, 1>^ Pictures;
+
+	public: First(void)
+		{
+			InitializeComponent();
+			//
+			//TODO: добавьте код конструктора
+			//
+		}
+
+	protected:
+		/// <summary>
+		/// ќсвободить все используемые ресурсы.
+		/// </summary>
+		~First()
+		{
+			if (components)
+			{
+				delete components;
+			}
+		}
+	private: System::Windows::Forms::Button^ but_exit;
+	private: System::Windows::Forms::Button^ but_start;
+	private: System::ComponentModel::IContainer^ components;
+	private:
+		/// <summary>
+		/// ќб€зательна€ переменна€ конструктора.
+		/// </summary>
+
+
+#pragma region Windows Form Designer generated code
+		/// <summary>
+		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
+		/// содержимое этого метода с помощью редактора кода.
+		/// </summary>
+		void InitializeComponent(void)
+		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(First::typeid));
+			this->but_exit = (gcnew System::Windows::Forms::Button());
+			this->but_start = (gcnew System::Windows::Forms::Button());
+			this->SuspendLayout();
+			// 
+			// but_exit
+			// 
+			this->but_exit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(209)), 
+				static_cast<System::Int32>(static_cast<System::Byte>(55)),
+				static_cast<System::Int32>(static_cast<System::Byte>(44)));
+			this->but_exit->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->but_exit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->but_exit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->but_exit->ForeColor = System::Drawing::Color::White;
+			this->but_exit->Location = System::Drawing::Point(600, -1);
+			this->but_exit->Name = L"but_exit";
+			this->but_exit->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->but_exit->Size = System::Drawing::Size(26, 23);
+			this->but_exit->TabIndex = 0;
+			this->but_exit->Text = L"X";
+			this->but_exit->UseVisualStyleBackColor = false;
+			this->but_exit->Click += gcnew System::EventHandler(this, &First::exit_Click);
+			// 
+			// but_start
+			// 
+			this->but_start->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->but_start->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->but_start->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"but_start.Image")));
+			this->but_start->Location = System::Drawing::Point(569, 567);
+			this->but_start->Name = L"but_start";
+			this->but_start->Size = System::Drawing::Size(57, 57);
+			this->but_start->TabIndex = 3;
+			this->but_start->UseVisualStyleBackColor = true;
+			this->but_start->Click += gcnew System::EventHandler(this, &First::but_start_Click);
+			// 
+			// First
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::SystemColors::Control;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->ClientSize = System::Drawing::Size(626, 626);
+			this->Controls->Add(this->but_exit);
+			this->Controls->Add(this->but_start);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Name = L"First";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
+			this->Text = L"8 ‘ерзей";
+			this->Load += gcnew System::EventHandler(this, &First::First_Load);
+			this->ResumeLayout(false);
+
+		}
+
+#pragma endregion
+	private: System::Void First_Load(System::Object^ sender, System::EventArgs^ e) {
+		Pictures = gcnew array <PictureBox^, 1>(64);
+		for (int i = 0; i < 64; i++)
+		{
+			Pictures[i] = gcnew PictureBox;
+			Pictures[i]->BackColor = System::Drawing::Color::Transparent;
+			Pictures[i]->Location = System::Drawing::Point(62 * ((i % 8) + 1), 63 * ((i / 8) + 1));
+			Pictures[i]->Size = System::Drawing::Size(66, 66);
+			Controls->Add(this->Pictures[i]);
+		}
+	}
+	private: System::Void exit_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void but_start_Click(System::Object^ sender, System::EventArgs^ e);
+	public: static System::Void print();
+};
+}
