@@ -10,23 +10,24 @@ namespace Ferz {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для First
+	/// РЎРІРѕРґРєР° РґР»СЏ First
 	/// </summary>
 	public ref class First : public System::Windows::Forms::Form
 	{
 	private: static array <PictureBox^, 1>^ Pictures;
+	public: static int delay;
 
 	public: First(void)
 		{
 			InitializeComponent();
 			//
-			//TODO: добавьте код конструктора
+			//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 			//
 		}
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~First()
 		{
@@ -37,29 +38,35 @@ namespace Ferz {
 		}
 	private: System::Windows::Forms::Button^ but_exit;
 	private: System::Windows::Forms::Button^ but_start;
+	private: System::Windows::Forms::TextBox^ textBox_delay;
+
+
+	private: System::Windows::Forms::Label^ label;
+
 	private: System::ComponentModel::IContainer^ components;
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(First::typeid));
 			this->but_exit = (gcnew System::Windows::Forms::Button());
 			this->but_start = (gcnew System::Windows::Forms::Button());
+			this->textBox_delay = (gcnew System::Windows::Forms::TextBox());
+			this->label = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// but_exit
 			// 
-			this->but_exit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(209)), 
-				static_cast<System::Int32>(static_cast<System::Byte>(55)),
+			this->but_exit->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(209)), static_cast<System::Int32>(static_cast<System::Byte>(55)),
 				static_cast<System::Int32>(static_cast<System::Byte>(44)));
 			this->but_exit->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->but_exit->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
@@ -87,6 +94,30 @@ namespace Ferz {
 			this->but_start->UseVisualStyleBackColor = true;
 			this->but_start->Click += gcnew System::EventHandler(this, &First::but_start_Click);
 			// 
+			// textBox_delay
+			// 
+			this->textBox_delay->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBox_delay->Location = System::Drawing::Point(482, 600);
+			this->textBox_delay->Name = L"textBox_delay";
+			this->textBox_delay->Size = System::Drawing::Size(60, 26);
+			this->textBox_delay->TabIndex = 4;
+			this->textBox_delay->Text = L"300";
+			this->textBox_delay->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// label
+			// 
+			this->label->AutoSize = true;
+			this->label->BackColor = System::Drawing::Color::Transparent;
+			this->label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->label->Location = System::Drawing::Point(353, 600);
+			this->label->Name = L"label";
+			this->label->Size = System::Drawing::Size(123, 20);
+			this->label->TabIndex = 5;
+			this->label->Text = L"Р—Р°РґРµСЂР¶РєР° (РјСЃ):";
+			// 
 			// First
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -94,15 +125,18 @@ namespace Ferz {
 			this->BackColor = System::Drawing::SystemColors::Control;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(626, 626);
+			this->Controls->Add(this->label);
+			this->Controls->Add(this->textBox_delay);
 			this->Controls->Add(this->but_exit);
 			this->Controls->Add(this->but_start);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"First";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"8 Ферзей";
+			this->Text = L"8 Р¤РµСЂР·РµР№";
 			this->Load += gcnew System::EventHandler(this, &First::First_Load);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 
@@ -117,6 +151,10 @@ namespace Ferz {
 			Pictures[i]->Size = System::Drawing::Size(66, 66);
 			Controls->Add(this->Pictures[i]);
 		}
+	}
+	public: System::Void Delay()
+	{
+		this->delay = Convert::ToInt32(textBox_delay->Text);
 	}
 	private: System::Void exit_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void but_start_Click(System::Object^ sender, System::EventArgs^ e);
