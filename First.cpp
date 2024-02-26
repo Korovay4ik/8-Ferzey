@@ -32,13 +32,14 @@ inline System::Void Ferz::First::exit_Click(System::Object^ sender, System::Even
 }
 
 inline System::Void Ferz::First::but_start_Click(System::Object^ sender, System::EventArgs^ e) {
+	Delay();
 	for (int i(0); i < 8; i++) for (int j(0); j < 8; j++) chess[i][j] = 0;
 	rek(0);
 }
 
 System::Void Ferz::First::print()
 {
-	Sleep(300);
+	Sleep(Ferz::First::delay);
 	for (int i(0); i < 8; i++)
 	{
 		for (int j(0); j < 8; j++)
@@ -94,8 +95,8 @@ bool rek(int i)
 			Ferz::First::print();
 			if (i == 7)
 			{
-				DialogResult result = MessageBox::Show("Íàéòè ñëåäóþùåå ðåøåíèå?",
-					"Íàéäåíî ðåøåíèå!", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+				DialogResult result = MessageBox::Show("ÐÐ°Ð¹Ñ‚Ð¸ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐµ Ñ€ÐµÑˆÐµÐ½Ð¸Ðµ?",
+					"ÐÐ°Ð¹Ð´ÐµÐ½Ð¾ Ñ€ÐµÑˆÐµÐ½Ð¸Ðµ!", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
 				if (result == ::DialogResult::Yes)
 				{
 					unferz(i, j);
